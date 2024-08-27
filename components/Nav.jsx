@@ -50,7 +50,7 @@ const nav = () => {
 
                         <Link href="/profile">
                             <Image 
-                                src="/assets/images/logo.svg"
+                                src={session?.user.image}
                                 width={37}
                                 height={37}
                                 className="rounded-full"
@@ -80,7 +80,7 @@ const nav = () => {
                 {session?.user ? (
                     <div className="flex">
                         <Image 
-                            src="/assets/images/logo.svg"
+                            src={session?.user.image}
                             alt="Promptopia Logo"
                             width={30} 
                             height={30}
