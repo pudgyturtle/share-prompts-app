@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,7 +7,7 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const nav = () => {
 
-    const isUserLoggedIn = true;
+    const { data: session } = useSession();
 
     const [providers, setProviders ] = useState(null);
     
@@ -34,10 +34,11 @@ const nav = () => {
                     className="object-contain"
                 />
                 <p className="logo_text">Promptopia</p>
-            </Link> 
+            </Link>
 
+            {/* Desktop Navigation */}
             <div className="sm:flex hidden">
-                {isUserLoggedIn ? (
+                {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
                         <Link href="/create-prompt" className="black_btn ">
                             Create Post
@@ -76,7 +77,7 @@ const nav = () => {
 
             {/* Mobile Navigation */}
             <div className="sm:hidden flex relative">
-                {isUserLoggedIn ? (
+                {session?.user ? (
                     <div className="flex">
                         <Image 
                             src="/assets/images/logo.svg"

@@ -1,9 +1,9 @@
  import { Schema, model, models } from 'mongoose';
 
- const userSchema = newSchema({
+ const userSchema = new Schema({
     email: {
         type: String,
-        unique: [true, 'Remail already exists'],
+        unique: [true, 'Email already exists'],
         required: [true, 'Email is required!'],
     },
     username: {
@@ -16,6 +16,6 @@
     }
  });
 
- const User = models.User ||  model("User", UserSchema);
+ const User = models.User ||  model("User", userSchema);
 
  export default User;
