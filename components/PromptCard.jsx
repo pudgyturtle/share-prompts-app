@@ -6,10 +6,12 @@ import { useSession } from 'next-auth/react';
 import { usePathName, useRouter } from 'next/navigation';
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handkeDelete }) => {
+  const [copied, setCopied] = useState("");
+  
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div>
+        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
           <Image 
             src={post && post.creator.image ? post.creator.image : "/images/logo.svg"}
             alt="user_image"
@@ -18,6 +20,26 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handkeDelete }) => {
             className="rounded-full object-object-contain"
           />
         </div>
+
+        <div className="flex flex-col">
+          <h3 className="font-satoshi font-semibold text-gray-900">
+            {post.creator.username}
+          </h3>
+          <p className="font-inter text-sm text-gray-500">
+            {post.creator.email}
+          </p>
+        </div>
+      </div>
+
+      <div className="copy_btn" onClick={() => {}}>
+        <Image 
+          src={copied === post.prompt
+            ? '/assets/icons/tick.svg'
+            : '/assets/icons/copy.svg'
+          }
+          width={12}
+          height={12}
+        />
       </div>
     </div>
   )
