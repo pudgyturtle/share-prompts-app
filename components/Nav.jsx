@@ -9,7 +9,7 @@ const nav = () => {
 
     const { data: session } = useSession();
 
-    const [providers, setProviders ] = useState(null);
+    const [providers, setProviders] = useState(null);
     
     const [toggleDropdown, setToggleDropdown] = useState(false);
 
